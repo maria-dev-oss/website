@@ -75,7 +75,7 @@ function buildStars() {
 function spawnMeteor() {
   const startX = rand(-W * 0.2, W * 0.8);
   const startY = rand(-H * 0.2, H * 0.2);
-  const len = rand(120, 340);
+  const len = rand(120, 341);
   const speed = rand(10, 18);
   const angle = rand(Math.PI * 0.20, Math.PI * 0.30);
 
@@ -211,7 +211,6 @@ function startSky() {
   running = true;
   rafId = requestAnimationFrame(loop);
 }
-
 function stopSky() {
   running = false;
   if (rafId) cancelAnimationFrame(rafId);
