@@ -1,108 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My CV</title>
-  <link rel="stylesheet" href="styl.css">
-  <style>
-    header {
-      text-align: center;
-      padding: 20px;
-    }
-
-    header img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-      color: #000;
-    }
-
-    section {
-      padding: 20px;
-    }
-
-    h1, h2, h3 {
-      margin: 10px 0;
-    }
-
-    ul {
-      list-style-type: disc;
-      margin-left: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="styl.css" />
 </head>
-<body>
+<body class="dark">
+  <!-- Animated sky layer -->
+  <canvas id="sky"></canvas>
+  <div class="sky-overlay" aria-hidden="true"></div>
 
-<header>
-  <img src="IMG.PNG" alt="Profile Photo">
-  <h1>Maria Mohammed</h1>
-  <p>Web Developer</p>
-  <button id="toggle-theme">Dark Mode</button>
-</header>
+  <div class="container">
+    <header class="hero">
+      <div class="hero__content">
+        <div class="avatar-wrap">
+          <img class="avatar" src="IMG.PNG" alt="Profile Photo" />
+          <span class="avatar-glow" aria-hidden="true"></span>
+        </div>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    Maria is a student in the <strong><em>Faculty of Science and Mathematics</em></strong>,
-    Department of Networks. She studied C++ basics including conditions,
-    while loops, and static & dynamic memory.
-  </p>
-</section>
+        <div class="hero__text">
+          <h1>Maria Mohammed</h1>
+          <p class="subtitle">Web Developer</p>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript</li>
-  </ul>
-</section>
+          <div class="hero__actions">
+            <button id="toggle-theme" class="btn">
+              <span class="btn__icon">🌙</span>
+              <span class="btn__text">Light Mode</span>
+            </button>
+          </div>
+        </div>
+      </div>
 
-<section id="education">
-  <h2>Education</h2>
-  <p>College of Computer Science and Mathematics</p>
-</section>
+      <div class="hero__shine" aria-hidden="true"></div>
+    </header>
 
-<section id="experience">
-  <h2>Experience</h2>
-  <p>HTML and CSS</p>
-</section>
+    <main class="grid">
+      <section id="about" class="card">
+        <h2>About Me</h2>
+        <p>
+          Maria is a student in the <strong><em>Faculty of Science and Mathematics</em></strong>,
+          Department of Networks. She studied C++ basics including conditions,
+          while loops, and static & dynamic memory.
+        </p>
+      </section>
 
-<section id="projects">
-  <h2>Projects</h2>
+      <section id="skills" class="card">
+        <h2>Skills</h2>
+        <ul class="chips">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
+      </section>
 
-  <div class="project">
-    <h3>Project 1: SHEIN</h3>
-    <p>
-      Developed using the Python programming language. A graphical user interface
-      was designed to simulate the look and feel of an application or website
-      using the Tkinter library.
-    </p>
+      <section id="education" class="card">
+        <h2>Education</h2>
+        <p>College of Computer Science and Mathematics</p>
+      </section>
+
+      <section id="experience" class="card">
+        <h2>Experience</h2>
+        <p>HTML and CSS</p>
+      </section>
+
+      <section id="projects" class="card card--wide">
+        <h2>Projects</h2>
+
+        <div class="project">
+          <h3>Project 1: SHEIN</h3>
+          <p>
+            Developed using the Python programming language. A graphical user interface
+            was designed to simulate the look and feel of an application or website
+            using the Tkinter library.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>Project 2: Tourism Company Database</h3>
+          <p>
+            A database project focused on managing and organizing the operations of
+            a tourism company.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <p class="mono">Email: maria.23cs266@student.uomosul.edu.iq</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span class="dot"></span>
+      <span>Designed with stardust ✨</span>
+      <span class="dot"></span>
+    </footer>
   </div>
 
-  <div class="project">
-    <h3>Project 2: Tourism Company Database</h3>
-    <p>
-      A database project focused on managing and organizing the operations of
-      a tourism company.
-    </p>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: maria.23cs266@student.uomosul.edu.iq</p>
-</section>
-
-<script src="scrip.js"></script>
+  <script src="scrip.js"></script>
 </body>
 </html>
