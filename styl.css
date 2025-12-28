@@ -3,7 +3,7 @@
   --radius: 18px;
   --radius2: 26px;
   --border: rgba(255,255,255,.14);
-  --shadow: 0 18px 60px rgba(0,0,0,.28);
+  --shadow: 0 18px 60px rgba(0,0,0,.30);
   --blur: 14px;
 
   --text: #0b1020;
@@ -11,7 +11,7 @@
 
   --bg1: #55b9ff;
   --bg2: #d9f3ff;
-  --card: rgba(255,255,255,.70);
+  --card: rgba(255,255,255,.71);
   --card2: rgba(255,255,255,.42);
   --accent: #1c5cff;
   --accent2: #00c2ff;
@@ -112,7 +112,6 @@ body.dark .sky-overlay{
   padding: 24px 0 34px;
 }
 
-/* هيرو */
 .hero{
   position: relative;
   border-radius: var(--radius2);
