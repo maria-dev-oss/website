@@ -86,7 +86,7 @@ function spawnMeteor() {
     vy: Math.sin(angle) * speed,
     len,
     life: 0,
-    maxLife: rand(18, 30),
+    maxLife: rand(19, 30),
     w: rand(1.2, 2.2)
   });
 }
