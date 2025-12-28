@@ -1,5 +1,6 @@
 /* =========================
-   Super Premium Space/Day UI
+   Premium Space / Day CV UI
+   GitHub Pages Friendly + Responsive
    ========================= */
 
 :root{
@@ -12,36 +13,36 @@
   --text: #0b1020;
   --muted: rgba(11,16,32,.70);
 
-  /* Light theme palette */
-  --bg1: #6ec7ff;
-  --bg2: #b8e3ff;
-  --card: rgba(255,255,255,.65);
+  /* LIGHT */
+  --bg1: #55b9ff;
+  --bg2: #d9f3ff;
+  --card: rgba(255,255,255,.70);
   --card2: rgba(255,255,255,.42);
   --accent: #1c5cff;
   --accent2: #00c2ff;
   --chip: rgba(255,255,255,.60);
 
   --btnText: #081028;
-  --btnBg: rgba(255,255,255,.68);
+  --btnBg: rgba(255,255,255,.70);
 
-  --outline: rgba(0,0,0,.08);
+  --outline: rgba(0,0,0,.09);
 }
 
 body.dark{
   --text: rgba(245,248,255,.95);
   --muted: rgba(245,248,255,.70);
 
-  /* Night/space palette */
+  /* NIGHT */
   --bg1: #02040f;
   --bg2: #0a1140;
-  --card: rgba(14,18,40,.55);
+  --card: rgba(14,18,40,.58);
   --card2: rgba(30,40,90,.24);
   --accent: #8a5cff;
   --accent2: #2ee9ff;
   --chip: rgba(255,255,255,.10);
 
   --btnText: rgba(245,248,255,.92);
-  --btnBg: rgba(16,22,52,.60);
+  --btnBg: rgba(16,22,52,.62);
 
   --outline: rgba(255,255,255,.12);
 }
@@ -53,13 +54,14 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   color: var(--text);
   overflow-x: hidden;
-  background: radial-gradient(1200px 800px at 20% 10%, var(--bg2) 0%, transparent 55%),
-              radial-gradient(1200px 800px at 80% 20%, var(--bg2) 0%, transparent 60%),
-              linear-gradient(180deg, var(--bg1), var(--bg2));
+  background:
+    radial-gradient(1100px 700px at 20% 10%, var(--bg2) 0%, transparent 55%),
+    radial-gradient(1200px 700px at 80% 20%, var(--bg2) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
   transition: background 900ms ease, color 450ms ease;
 }
 
-/* Canvas behind everything */
+/* Canvas behind */
 #sky{
   position: fixed;
   inset: 0;
@@ -70,37 +72,37 @@ body{
   transition: opacity 600ms ease;
 }
 
-/* Day sky overlay: clouds, glow, etc. */
+/* Overlay layer */
 .sky-overlay{
   position: fixed;
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  transition: opacity 700ms ease, filter 700ms ease;
+  transition: opacity 700ms ease, filter 700ms ease, transform 700ms ease;
 }
 
-/* Clouds for LIGHT mode */
+/* Clouds in LIGHT mode */
 body:not(.dark) .sky-overlay{
   opacity: 1;
   filter: saturate(1.05);
   background:
-    radial-gradient(800px 420px at 20% 20%, rgba(255,255,255,.65) 0%, transparent 55%),
-    radial-gradient(900px 520px at 70% 15%, rgba(255,255,255,.55) 0%, transparent 55%),
-    radial-gradient(700px 420px at 55% 35%, rgba(255,255,255,.45) 0%, transparent 55%),
-    radial-gradient(900px 520px at 45% 65%, rgba(255,255,255,.35) 0%, transparent 55%),
-    radial-gradient(1200px 700px at 70% 85%, rgba(255,255,255,.18) 0%, transparent 60%);
+    radial-gradient(900px 500px at 20% 20%, rgba(255,255,255,.68) 0%, transparent 55%),
+    radial-gradient(950px 520px at 75% 15%, rgba(255,255,255,.58) 0%, transparent 55%),
+    radial-gradient(800px 470px at 55% 35%, rgba(255,255,255,.46) 0%, transparent 55%),
+    radial-gradient(900px 520px at 45% 75%, rgba(255,255,255,.30) 0%, transparent 60%),
+    radial-gradient(1200px 700px at 70% 90%, rgba(255,255,255,.18) 0%, transparent 60%);
   animation: drift 18s ease-in-out infinite;
 }
 
-/* In NIGHT mode, overlay becomes subtle nebula glow */
+/* Nebula in NIGHT mode */
 body.dark .sky-overlay{
   opacity: 1;
   background:
     radial-gradient(900px 520px at 15% 20%, rgba(138,92,255,.22) 0%, transparent 55%),
     radial-gradient(1100px 640px at 80% 30%, rgba(46,233,255,.18) 0%, transparent 60%),
-    radial-gradient(900px 520px at 55% 70%, rgba(255,80,200,.10) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(2,4,15,.35), rgba(2,4,15,.75));
-  filter: saturate(1.1) contrast(1.05);
+    radial-gradient(900px 520px at 55% 75%, rgba(255,80,200,.10) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(2,4,15,.35), rgba(2,4,15,.78));
+  filter: saturate(1.12) contrast(1.05);
 }
 
 @keyframes drift{
@@ -109,18 +111,24 @@ body.dark .sky-overlay{
   100%{ transform: translate3d(0,0,0) scale(1); }
 }
 
-/* Container */
-.container{
-  width: min(1050px, 92vw);
-  margin: 0 auto;
-  padding: 28px 0 34px;
+/* Reduce motion احتراماً لإعدادات الجهاز */
+@media (prefers-reduced-motion: reduce){
+  .sky-overlay{ animation: none !important; }
+  *{ scroll-behavior: auto !important; transition: none !important; }
 }
 
-/* HERO */
+/* Layout container */
+.container{
+  width: min(1080px, 92vw);
+  margin: 0 auto;
+  padding: 24px 0 34px;
+}
+
+/* Hero */
 .hero{
   position: relative;
   border-radius: var(--radius2);
-  padding: 26px 22px;
+  padding: clamp(18px, 3.5vw, 28px);
   background: linear-gradient(135deg, var(--card), var(--card2));
   border: 1px solid var(--outline);
   box-shadow: var(--shadow);
@@ -143,20 +151,20 @@ body.dark .sky-overlay{
 
 .hero__content{
   display:flex;
-  gap: 20px;
+  gap: 18px;
   align-items:center;
 }
 
 .avatar-wrap{
   position: relative;
-  width: 122px;
-  height: 122px;
+  width: 124px;
+  height: 124px;
   flex: 0 0 auto;
 }
 
 .avatar{
-  width: 122px;
-  height: 122px;
+  width: 124px;
+  height: 124px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid rgba(255,255,255,.35);
@@ -170,8 +178,9 @@ body.dark .sky-overlay{
   inset:-10px;
   border-radius: 50%;
   z-index: 1;
-  background: radial-gradient(circle at 30% 30%, rgba(46,233,255,.45), transparent 55%),
-              radial-gradient(circle at 70% 70%, rgba(138,92,255,.45), transparent 55%);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(46,233,255,.48), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(138,92,255,.46), transparent 55%);
   filter: blur(6px);
   opacity: .9;
   animation: pulse 2.8s ease-in-out infinite;
@@ -182,18 +191,23 @@ body.dark .sky-overlay{
   50%{ transform: scale(1.08); opacity: 1; }
 }
 
+.hero__text{
+  min-width: 0;
+}
+
 .hero__text h1{
   margin: 0;
-  font-size: clamp(28px, 3.3vw, 44px);
+  font-size: clamp(26px, 4.2vw, 46px);
   letter-spacing: .3px;
   line-height: 1.05;
   text-shadow: 0 10px 40px rgba(0,0,0,.18);
+  word-wrap: break-word;
 }
 
 .subtitle{
   margin: 8px 0 12px;
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: .2px;
 }
 
@@ -220,6 +234,7 @@ body.dark .sky-overlay{
   transition: transform 160ms ease, box-shadow 250ms ease, background 350ms ease;
   box-shadow: 0 12px 30px rgba(0,0,0,.15);
   user-select:none;
+  outline: none;
 }
 
 .btn:hover{
@@ -229,6 +244,10 @@ body.dark .sky-overlay{
 
 .btn:active{
   transform: translateY(0px) scale(.98);
+}
+
+.btn:focus-visible{
+  box-shadow: 0 0 0 3px rgba(46,233,255,.35), 0 18px 42px rgba(0,0,0,.22);
 }
 
 .btn__icon{
@@ -241,9 +260,9 @@ body.dark .sky-overlay{
   border: 1px solid var(--outline);
 }
 
-/* Grid layout */
+/* Grid */
 .grid{
-  margin-top: 18px;
+  margin-top: 16px;
   display:grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
@@ -263,7 +282,7 @@ body.dark .sky-overlay{
 
 .card:hover{
   transform: translateY(-2px);
-  border-color: rgba(46,233,255,.28);
+  border-color: rgba(46,233,255,.30);
 }
 
 .card--wide{
@@ -293,7 +312,7 @@ body.dark .sky-overlay{
 
 .card p{ margin:0; color: var(--muted); }
 
-/* Skill chips */
+/* Skills chips */
 .chips{
   list-style:none;
   padding:0;
@@ -322,7 +341,11 @@ body.dark .sky-overlay{
   background: rgba(0,0,0,.06);
   margin-top: 12px;
 }
-body:not(.dark) .project{ background: rgba(255,255,255,.30); border-color: rgba(0,0,0,.10); }
+body:not(.dark) .project{
+  background: rgba(255,255,255,.34);
+  border-color: rgba(0,0,0,.12);
+}
+
 .project h3{
   margin: 0 0 8px;
   color: var(--text);
@@ -330,7 +353,6 @@ body:not(.dark) .project{ background: rgba(255,255,255,.30); border-color: rgba(
 }
 .project p{ margin: 0; }
 
-/* Footer */
 .footer{
   margin-top: 18px;
   display:flex;
@@ -340,7 +362,9 @@ body:not(.dark) .project{ background: rgba(255,255,255,.30); border-color: rgba(
   color: var(--muted);
   font-weight: 700;
   letter-spacing: .2px;
+  padding-bottom: 6px;
 }
+
 .dot{
   width: 6px;
   height: 6px;
@@ -349,19 +373,22 @@ body:not(.dark) .project{ background: rgba(255,255,255,.30); border-color: rgba(
   box-shadow: 0 10px 22px rgba(0,0,0,.16);
 }
 
-/* Monospace for email */
 .mono{
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   word-break: break-word;
 }
 
 /* Responsive */
-@media (max-width: 900px){
+@media (max-width: 920px){
   .card{ grid-column: span 12; }
-  .hero__content{ flex-direction: column; text-align:center; }
 }
 
-/* If in light mode, fade out canvas a bit (still ok) */
+@media (max-width: 560px){
+  .hero__content{ flex-direction: column; text-align:center; }
+  .hero__actions{ justify-content: center; }
+}
+
+/* Canvas softer in day */
 body:not(.dark) #sky{
   opacity: .22;
 }
