@@ -11,17 +11,17 @@ let meteors = [];
 let rafId = null;
 let running = false;
 
-const STORAGE_KEY = "cv_theme"; // "dark" | "light"
+const STORAGE_KEY = "cv_theme";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function rand(min, max) { return Math.random() * (max - min) + min; }
 
-// ===== Theme handling =====
+// ===== الثيم  =====
 function setTheme(isDark, save = true) {
   document.body.classList.toggle("dark", isDark);
   btn.setAttribute("aria-pressed", String(isDark));
 
-  // Button label = what will happen after click
+  // هنا المود
   if (isDark) {
     btnIcon.textContent = "🌙";
     btnText.textContent = "Light Mode";
@@ -34,7 +34,6 @@ function setTheme(isDark, save = true) {
     localStorage.setItem(STORAGE_KEY, isDark ? "dark" : "light");
   }
 
-  // ensure animation running (but will respect reduced motion)
   startSky();
 }
 
@@ -43,7 +42,7 @@ btn.addEventListener("click", () => {
   setTheme(!isDarkNow, true);
 });
 
-// ===== Canvas resize =====
+// ===== كنافة =====
 function resize() {
   DPR = Math.min(window.devicePixelRatio || 1, 2);
   W = Math.floor(window.innerWidth);
@@ -60,7 +59,7 @@ function resize() {
 
 window.addEventListener("resize", resize);
 
-// ===== Stars =====
+// ===== نجوم ضفتهم هينا =====
 function buildStars() {
   stars = [];
   const density = Math.round((W * H) / 9000);
@@ -78,7 +77,6 @@ function buildStars() {
   }
 }
 
-// ===== Meteors (shooting stars) =====
 function spawnMeteor() {
   const startX = rand(-W * 0.2, W * 0.8);
   const startY = rand(-H * 0.2, H * 0.2);
@@ -102,11 +100,10 @@ function maybeSpawnMeteor() {
   if (prefersReducedMotion) return;
 
   const isDark = document.body.classList.contains("dark");
-  const chance = isDark ? 0.05 : 0.012; // night = more
+  const chance = isDark ? 0.05 : 0.012; 
   if (Math.random() < chance && meteors.length < 6) spawnMeteor();
 }
 
-// ===== Paint background =====
 function paintBackground() {
   const isDark = document.body.classList.contains("dark");
 
@@ -152,7 +149,6 @@ function paintStars() {
     ctx.fill();
   }
 
-  // subtle colored sparkles at night
   if (isDark && !prefersReducedMotion) {
     for (let i = 0; i < 10; i++) {
       const x = rand(0, W), y = rand(0, H);
@@ -177,7 +173,6 @@ function paintMeteors() {
       m.y += m.vy;
       m.life += 1;
     } else {
-      // reduced motion: keep them static and remove quickly
       m.life += 2;
     }
 
@@ -205,7 +200,6 @@ function paintMeteors() {
   }
 }
 
-// ===== Main loop =====
 function loop() {
   if (!running) return;
 
@@ -229,13 +223,11 @@ function stopSky() {
   rafId = null;
 }
 
-// Pause animation when tab hidden (better for mobile battery)
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) stopSky();
   else startSky();
 });
 
-// ===== Init =====
 resize();
 
 // يبدأ ليلي دائمًا إلا إذا كان المستخدم اختار سابقاً
@@ -243,7 +235,6 @@ const saved = localStorage.getItem(STORAGE_KEY);
 if (saved === "light") {
   setTheme(false, false);
 } else {
-  // default = dark (night)
   setTheme(true, false);
 }
 
