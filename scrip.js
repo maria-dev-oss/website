@@ -16,12 +16,9 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 function rand(min, max) { return Math.random() * (max - min) + min; }
 
-// ===== الثيم  =====
 function setTheme(isDark, save = true) {
   document.body.classList.toggle("dark", isDark);
   btn.setAttribute("aria-pressed", String(isDark));
-
-  // هنا المود
   if (isDark) {
     btnIcon.textContent = "🌙";
     btnText.textContent = "Light Mode";
@@ -42,7 +39,6 @@ btn.addEventListener("click", () => {
   setTheme(!isDarkNow, true);
 });
 
-// ===== كنافة =====
 function resize() {
   DPR = Math.min(window.devicePixelRatio || 1, 2);
   W = Math.floor(window.innerWidth);
@@ -59,7 +55,6 @@ function resize() {
 
 window.addEventListener("resize", resize);
 
-// ===== نجوم ضفتهم هينا =====
 function buildStars() {
   stars = [];
   const density = Math.round((W * H) / 9000);
@@ -230,7 +225,6 @@ document.addEventListener("visibilitychange", () => {
 
 resize();
 
-// يبدأ ليلي دائمًا إلا إذا كان المستخدم اختار سابقاً
 const saved = localStorage.getItem(STORAGE_KEY);
 if (saved === "light") {
   setTheme(false, false);
